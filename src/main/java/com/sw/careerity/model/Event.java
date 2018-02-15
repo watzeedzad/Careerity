@@ -319,4 +319,23 @@ public class Event {
         event.setEventPhotoId(rs.getInt("eventPhotoId"));
 
     }
+    
+    public boolean registerEvent(int eventId,int userId) { 
+        boolean result = false;
+        try {  
+            Connection conn = ConnectionBuilder.getConnection();
+            String sqlcmd = "INSERT INTO registerevent(userId,eventId,registerDate) values(?,?,?)";
+            PreparedStatement pstm = conn.prepareStatement(sqlcmd);
+            pstm.setInt(1, userId);
+            pstm.setInt(2, eventId);
+            pstm.setDate(3,  new java.sql.Date(System.currentTimeMillis()));
+            if (pstm.executeUpdate() > 0) {
+                result = true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
 }
