@@ -5,6 +5,7 @@
  */
 package com.sw.careerity.model;
 
+import com.sw.careerity.etc.ConnectionBuilder;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
