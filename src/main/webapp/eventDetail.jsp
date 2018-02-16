@@ -30,6 +30,7 @@
             margin-left: auto;
             margin-right: auto;
             margin-top: 50px;
+            margin-bottom:  50px;
             padding: 50px;
             border-radius: 10px;
 
@@ -104,14 +105,10 @@
 
 
           </div>
+        </div>
 
 
-
-
-            <footer class="text-muted">
-              <div class="container">
-            
-
+        <%@ include file = "footer.jsp" %>
     </body>
     <script>
         function initMap() {
