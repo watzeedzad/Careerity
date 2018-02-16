@@ -32,44 +32,7 @@
     <body>
 
 
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" >
-            <a class="navbar-brand" href="#">Careerity</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-            <div class="collapse navbar-collapse" id="navbarsExample03">
-                <ul class="navbar-nav mr-auto navbar-right">
-
-                    <li class="nav-item active">
-                        <img src="img/ic_search_navbar.png" />
-
-
-                    </li>
-
-                    <li class="nav-item">
-                       <img src="img/ic_createEvent_navbar.png" />
-
-
-                    </li>
-
-                    <li class="nav-item">
-                       <img src="img/ic_notifications_navbar.png" />
-
-
-                    </li>
-
-                    <li class="nav-item dropdown">
-                         <img src="img/ic_profile_navbar.png" />
-
-                    </li>
-
-
-                </ul>
-
-            </div>
-        </nav>
+        <%@ include file = "navBar.jsp" %>
 
         <!-- ===================================================================================================== -->
 
@@ -80,7 +43,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-        <a href="viewEvent.jsp">
+        <a href="eventDetail.jsp">
         <main role="main">
             <div class="album py-5 ">
                 <div class="container">
