@@ -4,9 +4,17 @@
         <servlet-name>EventDetail</servlet-name>
         <servlet-class>com.sw.careerity.controller.EventDetailServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterEventServlet</servlet-name>
+        <servlet-class>com.sw.careerity.controller.RegisterEventServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EventDetail</servlet-name>
         <url-pattern>/eventDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterEventServlet</servlet-name>
+        <url-pattern>/RegisterEvent</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

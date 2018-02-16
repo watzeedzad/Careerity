@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Phanupong
  */
-public class EventDetailServlet extends HttpServlet {
+public class RegisterEventServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,11 +31,10 @@ public class EventDetailServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String eventId = request.getParameter("eventId");        
-        Event event = new Event();
-        event = event.eventDetail(Integer.parseInt(eventId));      
-        if(event!=null){
-            request.getSession().setAttribute("event", event);
-        }
+        String userId = request.getParameter("userId");        
+        Event event = new Event();      
+        event.registerEvent(Integer.parseInt(eventId),Integer.parseInt(userId));
+           
         getServletContext().getRequestDispatcher("/eventDetail.jsp").forward(request, response);
     }
 
