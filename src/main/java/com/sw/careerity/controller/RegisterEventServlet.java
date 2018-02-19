@@ -31,18 +31,22 @@ public class RegisterEventServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int eventId = Integer.parseInt(request.getParameter("eventId"));        
-        int userId = Integer.parseInt(request.getParameter("userId")); 
+        int eventId = Integer.parseInt(request.getParameter("eventId"));
+        int userId = Integer.parseInt(request.getParameter("userId"));
         String mss = "";
         Event event = new Event();
-        if(Check.checkAlreadyRegister(eventId,userId)){
-            if(Check.checkEventLimit(eventId)){
-            mss = "ลงทะเบียนเรียบร้อยแล้ว";
-            event.registerEvent(eventId,userId);
-            }else{
+        if (Check.checkAlreadyRegister(eventId, userId)) {
+            if (Check.checkEventLimit(eventId)) {
+                if (Check.checkEventStatus(eventId)) {
+                    mss = "ลงทะเบียนเรียบร้อยแล้ว";
+                    event.registerEvent(eventId, userId);
+                } else {
+                    mss = "อีเวนท์นี้ปิดรับสมัครแล้ว";
+                }
+            } else {
                 mss = "อีเวนท์นี้เต็มแล้ว";
             }
-        }else{
+        } else {
             mss = "ผู้ใช้ลงทะเบียนไปแล้ว";
         }
         request.setAttribute("message", mss);
