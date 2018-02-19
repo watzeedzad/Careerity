@@ -36,8 +36,12 @@ public class RegisterEventServlet extends HttpServlet {
         String mss = "";
         Event event = new Event();
         if(Check.checkAlreadyRegister(eventId,userId)){
+            if(Check.checkEventLimit(eventId)){
             mss = "ลงทะเบียนเรียบร้อยแล้ว";
             event.registerEvent(eventId,userId);
+            }else{
+                mss = "อีเวนท์นี้เต็มแล้ว";
+            }
         }else{
             mss = "ผู้ใช้ลงทะเบียนไปแล้ว";
         }
