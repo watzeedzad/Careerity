@@ -62,4 +62,23 @@ public class Check {
         }
         return result;
     }
+    
+    public static boolean checkEventStatus(int eventId){
+        boolean status = false;
+        
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            PreparedStatement ppstm = conn.prepareStatement("SELECT eventStatus FROM event "
+                    + "WHERE eventId = ?");
+            ppstm.setInt(1, eventId);
+            ResultSet rs = ppstm.executeQuery();
+            if (rs.next()) {
+                status = rs.getBoolean("eventStatus");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return status;
+    }
+    
 }
