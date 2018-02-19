@@ -40,4 +40,26 @@ public class Check {
         }
         return result;
     }
+    
+    public static boolean checkAlreadyRegister(int eventId,int userId){
+        boolean result = false;
+        int registerId=-1;
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            PreparedStatement ppstm = conn.prepareStatement("SELECT userId FROM RegisterEvent "
+                    + "WHERE eventId = ? & eventId =?");
+            ppstm.setInt(1, eventId);
+            ppstm.setInt(2, userId);
+            ResultSet rs = ppstm.executeQuery();
+            if (rs.next()) {
+                registerId = rs.getInt("userId");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(registerId != -1){
+            return true;
+        }
+        return result;
+    }
 }
