@@ -5,6 +5,7 @@
  */
 package com.sw.careerity.controller;
 
+import com.sw.careerity.model.Check;
 import com.sw.careerity.model.Event;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,11 +31,17 @@ public class RegisterEventServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String eventId = request.getParameter("eventId");        
-        String userId = request.getParameter("userId");        
-        Event event = new Event();      
-        event.registerEvent(Integer.parseInt(eventId),Integer.parseInt(userId));
-           
+        int eventId = Integer.parseInt(request.getParameter("eventId"));        
+        int userId = Integer.parseInt(request.getParameter("userId")); 
+        String mss = "";
+        Event event = new Event();
+        if(Check.checkAlreadyRegister(eventId,userId)){
+            mss = "ลงทะเบียนเรียบร้อยแล้ว";
+            event.registerEvent(eventId,userId);
+        }else{
+            mss = "ผู้ใช้ลงทะเบียนไปแล้ว";
+        }
+        request.setAttribute("message", mss);
         getServletContext().getRequestDispatcher("/eventDetail.jsp").forward(request, response);
     }
 
