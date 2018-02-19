@@ -457,8 +457,7 @@
             document.getElementById("defaultOpen").click();
         </script>
 
-        <footer class="text-muted">
-            <div class="container">
+        <%@ include file = "footer.jsp" %>
                 </body>
 
 
