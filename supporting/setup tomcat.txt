@@ -1,0 +1,32 @@
+----Install java jdk----
+yum install java-1.8.0-openjdk-devel -y
+
+----Create tomcat user----
+sudo groupadd tomcat
+sudo useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
+
+----Install tomcat----
+cd ~
+wget http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.24/bin/apache-tomcat-8.5.24.tar.gz
+sudo mkdir /opt/tomcat
+sudo tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=
+
+----Update permission----
+cd /opt/tomcat
+sudo chgrp -R tomcat /opt/tomcat
+sudo chmod -R g+r conf
+sudo chmod g+x conf
+sudo chown -R tomcat webapps/ work/ temp/ logs/
+
+----Install systemd unit file----
+sudo vi /etc/systemd/system/tomcat.service
+sudo systemctl daemon-reload
+sudo systemctl start tomcat
+sudo systemctl enable tomcat
+
+---Configure web management interface----
+sudo nano /opt/tomcat/conf/tomcat-users.xml
+    <tomcat-users>
+        <user username="admin" password="password" roles="manager-gui,admin-gui"/>
+    </tomcat-users>
+sudo systemctl restart tomcat
