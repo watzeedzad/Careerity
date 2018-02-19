@@ -137,6 +137,26 @@
 
                   </div>
                 </div>
+                
+<!-- ==================================Pop-up2==================================== -->
+                <div class="modal fade" id="myModal2" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                        <p>ลงทะเบียนสำเร็จ</p>
+                      </div>
+                      <div class="mo-footer">
+                        <button type="button" class="btn btn-lg" data-dismiss="modal">ตกลง</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
         </div>
 
 
