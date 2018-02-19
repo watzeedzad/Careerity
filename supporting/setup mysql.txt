@@ -1,0 +1,17 @@
+----Installing----
+cd ~
+wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+sudo rpm -ivh mysql57-community-release-el7-9.noarch.rpm
+sudo yum install mysql-server
+
+----Starting----
+sudo systemctl start mysqld
+
+----Configuring----
+sudo mysql_secure_installation
+ > set password
+ > remove test database [Y]
+ > allow root remote connection [Y]
+sudo nano /etc/my.cnf
+bind-address=127.0.0.1 > bind-address=0.0.0.0
+sudo systemctl restart mysqld
