@@ -20,7 +20,8 @@
         <style>
 
             body{
-                background-color: #5EA1B4
+                background-color: #5EA1B4;
+                font-family: 'kanit';
             }
 
             .box{
@@ -66,6 +67,10 @@
                 padding: 20px;
                 text-align: center;
                 font-size: 24px;
+            }
+            img {
+                max-width: 100%;
+                height: auto;
             }
         </style>
         <title>ViewEvent</title>
