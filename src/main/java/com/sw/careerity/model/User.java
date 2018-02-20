@@ -5,6 +5,9 @@
  */
 package com.sw.careerity.model;
 
+import com.sw.careerity.etc.ConnectionBuilder;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -51,10 +54,33 @@ public class User {
         user.setPassword("password");
     }
 
-    public String checkUserRole(int userId) {
+    public static boolean checkOwnerId(int userId, int eventId) {
+        boolean result = false;
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            String sqlcmd = "Select eventOwnerId FROM Event "
+                    + "WHERE eventId=?";
+            PreparedStatement pstm = conn.prepareStatement(sqlcmd);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                if (userId != rs.getInt("eventOwnerId")) {
+                    result = true;
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return result;
+    }
+
+    public static String checkUserRole(int userId, int eventId) {
         String role = "";
         if (userId >= 100001 && userId < 200000) {
-            role = "folk";
+            if (checkOwnerId(userId, eventId)) {
+                role = "owner";
+            } else {
+                role = "folk";
+            }
         }
         if (userId >= 200001 && userId < 300000) {
             role = "company";

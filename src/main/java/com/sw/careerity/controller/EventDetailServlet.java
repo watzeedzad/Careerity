@@ -6,6 +6,7 @@
 package com.sw.careerity.controller;
 
 import com.sw.careerity.model.Event;
+import com.sw.careerity.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,11 +31,14 @@ public class EventDetailServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String eventId = request.getParameter("eventId");        
+        int eventId = Integer.parseInt(request.getParameter("eventId"));        
+        int userId = Integer.parseInt(request.getParameter("userId"));        
         Event event = new Event();
-        event = event.eventDetail(Integer.parseInt(eventId));      
+        event = event.eventDetail(eventId);
+        String userRole = User.checkUserRole(userId,eventId);
         if(event!=null){
             request.getSession().setAttribute("event", event);
+            request.getSession().setAttribute("userRole", userRole);
         }
         getServletContext().getRequestDispatcher("/eventDetail.jsp").forward(request, response);
     }
