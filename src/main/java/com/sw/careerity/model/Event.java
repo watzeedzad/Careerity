@@ -268,13 +268,12 @@ public class Event {
         Event event = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement ppstm = conn.prepareStatement("SELECT * FROM event e "
-                    + "JOIN type t ON e.eventTypeId = t.typeId "
-                    + "JOIN skilltype st ON e.eventSkillTypeID = st.skillTypeID "
-                    + "JOIN province p ON e.eventProvinceID = p.provinceID "
-                    + "JOIN district d ON e.eventDistirctID = d.districtID "
-                    + "JOIN subdistrict sd ON e.eventSubDistirctID = sd.subDistrictID "
-                    + "WHERE e.eventId = ?");
+            PreparedStatement ppstm = conn.prepareStatement("SELECT * FROM Event e JOIN Type t ON e.eventTypeId = t.typeId "
+                    + "JOIN SkillType st ON e.eventSkillTypeId = st.skillTypeId "
+                    + "JOIN Province p ON e.eventProvinceId = p.provinceId "
+                    + "JOIN District d ON e.eventDistrictId = d.districtId "
+                    + "JOIN SubDistrict sd ON e.eventSubDistrictId = sd.subDistrictId "
+                    + "JOIN Photo pt ON e.eventPhotoId = pt.photoId WHERE e.eventId = 1");
             ppstm.setInt(1, eventId);
             ResultSet rs = ppstm.executeQuery();
             while (rs.next()) {
