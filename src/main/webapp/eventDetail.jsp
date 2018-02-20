@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -82,7 +83,7 @@
         <!-- ===================================================================================================== -->
 
         <div class="box">
-            <h1><img src="img/Temp-cat.jpg" width="150px" />  หัวอีเวนท์</h1>
+            <h1><img src="img/Temp-cat.jpg" width="150px"  />  หัวอีเวนท์</h1>
             <hr>
 
             <div class="column1" >
@@ -119,6 +120,12 @@
 
 
         </div>
+        <!-- ==================================button-creator==================================== -->
+        <button type="button" class="btn btn-info btn-lg" style="float: right; background-color:blue; border-color: blue">แก้ไขอีเวนท์</button>
+        <button type="button" class="btn btn-info btn-lg" style="float: right; background-color:#ccc; border-color: #ccc">ลบอีเวนท์</button>
+        <button type="button" class="btn btn-info btn-lg" style="float: right; background-color:#ccc; border-color: #ccc">ปิดอีเวนท์</button>
+        <button type="button" class="btn btn-info btn-lg" style="float: right; ">ดูผู้เข้าร่วม</button>
+        
         <!-- ==================================Pop-up1==================================== -->
 
 
@@ -126,7 +133,7 @@
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="float: right; ">ลงทะเบียน</button>
 
         <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
+       <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
 
                 <!-- Modal content-->
