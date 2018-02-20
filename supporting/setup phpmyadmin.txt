@@ -1,0 +1,36 @@
+----Install LAMP stack----
+
+----Install Apache----
+sudo yum install httpd
+sudo systemctl start httpd
+sudo systemctl enable httpd
+
+(in this case mysql is already installed)
+
+----Install PHP----
+sudo yum install php php-mysql
+sudo systemctl restart httpd
+yum install php-fpm
+
+----Install phpmyadmin----
+sudo yum install epel-release
+sudo yum install phpmyadmin
+sudo nano /etc/httpd/conf.d/phpMyAdmin.conf
+. . .
+   <IfModule mod_authz_core.c>
+     # Apache 2.4
+     <RequireAny>
+       Require all granted       //to allow acces from all ip
+       Require ip 127.0.0.1
+       Require ip ::1
+     </RequireAny>
+   </IfModule>
+   <IfModule !mod_authz_core.c>
+     # Apache 2.2
+     Order Deny,Allow
+     Allow from All              //to allow acces from all ip
+     Allow from 127.0.0.1
+     Allow from ::1
+   </IfModule>
+. . .
+sudo systemctl restart httpd
