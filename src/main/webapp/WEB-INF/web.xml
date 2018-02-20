@@ -10,7 +10,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>EventDetail</servlet-name>
-        <url-pattern>/eventDetail</url-pattern>
+        <url-pattern>/EventDetail</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegisterEventServlet</servlet-name>
