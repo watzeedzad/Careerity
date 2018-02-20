@@ -86,27 +86,33 @@
             <hr>
 
             <div class="column1" >
-                <p>ประเภทของทักษะงาน</p>
-                <p>วันที่อีเวนท์เริ่มต้น</p>
-                <p>วันที่อีเวนท์สิ้นสุด</p>
-                <p>รายละเอียดเพิ่มเติม</p>
-                <p>วันที่เปิดรับสมัคร</p>
-                <p>วันที่ปิดรับสมัคร</p>
-                <p>ที่อยู่ของสถานที่จัด</p>
-                <p>link วิดีโอ</p>
-                <p>จำนวนคนที่รับสมัคร</p>
-                <p>แผนที่</p>
+                <p>ชื่อ :</p>
+                <p>ประเภทของทักษะงาน :</p>
+                <p>วันที่อีเวนท์เริ่มต้น :</p>
+                <p>วันที่อีเวนท์สิ้นสุด :</p>
+                <p>รายละเอียดเพิ่มเติม :</p>
+                <p>วันที่เปิดรับสมัคร :</p>
+                <p>วันที่ปิดรับสมัคร :</p>
+                <p>ที่อยู่ของสถานที่จัด :</p>
+                <p>จำนวนคนที่สมัครในปัจจุบัน :</p>
+                <p>จำนวนคนที่รับสมัคร :</p>
+                <p>แผนที่ :</p>
             </div>
             <div class="column2">
-                <p><fmt:formatNumber value="${sessionScope.event.eventName}"/></p>
-                <p><fmt:formatNumber value="${sessionScope.event.eventStartDate}"/></p>
-                <p><fmt:formatNumber value="${sessionScope.event.eventEndDate}"/></p>
-                <p><fmt:formatNumber value="${sessionScope.event.eventTypeDesc}"/></p>
-                <p><fmt:formatNumber value="${sessionScope.event.eventCreatedDate}"/></p>
-                <p><fmt:formatNumber value="${sessionScope.event.eventCloseDatee}"/></p>
-                <p><fmt:formatNumber value="${sessionScope.event.eventAddress}"/></p>
-                <p><fmt:formatNumber value="${sessionScope.event.eventLimit}"/></p>
-                <p><fmt:formatNumber value="${sessionScope.event.eventLimit}"/></p>
+                <p>${sessionScope.event.eventName}</p>
+                <p>${sessionScope.event.eventSkillTypeDesc}</p>
+                <p>${sessionScope.event.eventStartDate}</p>
+                <p>${sessionScope.event.eventEndDate}</p>
+                <p>${sessionScope.event.eventDesc}</p>
+                <p>${sessionScope.event.eventCreatedDate}</p>
+                <p>${sessionScope.event.eventCloseDate}</p>
+                <p>${sessionScope.event.eventAddress} 
+                    ${sessionScope.event.eventSubDistrictDesc} 
+                    ${sessionScope.event.eventDistrictDesc} 
+                    ${sessionScope.event.eventProvinceDesc} 
+                    ${sessionScope.event.eventPostCode}</p>               
+                <p>${sessionScope.event.eventCount}</p>
+                <p>${sessionScope.event.eventLimit}</p>
                 <div id="map" style="height:200px; width:300px"/>
 
             </div>
@@ -169,7 +175,7 @@
 </body>
 <script>
     function initMap() {
-        var myLatLng = {lat: 36.2684, lng: 98.369};
+        var myLatLng = {lat: ${sessionScope.event.eventLatitude}, lng: ${sessionScope.event.eventLongitude}};
 
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,
