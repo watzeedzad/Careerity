@@ -3,7 +3,7 @@
     Created on : Feb 15, 2018, 10:29:03 PM
     Author     : Aekkawat
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -126,11 +126,12 @@
 
         </div>
         <!-- ==================================button-creator==================================== -->
+
         <button type="button" class="btn btn-info btn-lg" style="float: right; background-color:blue; border-color: blue">แก้ไขอีเวนท์</button>
         <button type="button" class="btn btn-info btn-lg" style="float: right; background-color:#ccc; border-color: #ccc">ลบอีเวนท์</button>
         <button type="button" class="btn btn-info btn-lg" style="float: right; background-color:#ccc; border-color: #ccc">ปิดอีเวนท์</button>
         <button type="button" class="btn btn-info btn-lg" style="float: right; ">ดูผู้เข้าร่วม</button>
-        
+
         <!-- ==================================Pop-up1==================================== -->
 
 
@@ -138,7 +139,8 @@
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="float: right; ">ลงทะเบียน</button>
 
         <!-- Modal -->
-       <div class="modal fade" id="myModal" role="dialog">
+        <form action="RegisterEvent" method="post">
+        <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
 
                 <!-- Modal content-->
@@ -150,35 +152,41 @@
                         <p>คุณต้องการจะลงทะเบียนอีเวนท์นี้ใช่หรือไม่</p>
                     </div>
                     <div class="mo-footer">
-                        <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal2">ยืนยัน</button>
+                        <input type="hidden" name="eventId" value="${sessionScope.event.eventId}">
+                        <input type="hidden" name="countUser" value="${sessionScope.event.eventCount}">
+                        <input type="hidden" name="userId" value="100001">
+                        <button type="submit" class="btn btn-lg" data-toggle="modal" data-target="#myModal2">ยืนยัน</button>
                         <button type="button" class="btn btn-lg" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
 
             </div>
         </div>
+        </form>
 
         <!-- ==================================Pop-up2==================================== -->        
         <!-- Modal -->
-        <div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                        </button>
+        <c:if test="${message!=null}">
+            <div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                            </button>
 
 
-                    </div>
-                    <div class="modal-body">
+                        </div>
+                        <div class="modal-body">
 
-                        <p>Test</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <p>${message}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </c:if>
 
     </div>
 
