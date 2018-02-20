@@ -24,16 +24,16 @@ public class Check {
         int count=0;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement ppstm = conn.prepareStatement("SELECT eventLimit,eventCount FROM event "
+            PreparedStatement ppstm = conn.prepareStatement("SELECT eventLimit, eventCountUser FROM Event "
                     + "WHERE eventId = ?");
             ppstm.setInt(1, eventId);
             ResultSet rs = ppstm.executeQuery();
             if (rs.next()) {
                 limit = rs.getInt("eventLimit");
-                count = rs.getInt("eventCount");
+                count = rs.getInt("eventCountUser");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
         if(count+1<=limit){
             return true;
@@ -46,19 +46,18 @@ public class Check {
         int registerId=-1;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement ppstm = conn.prepareStatement("SELECT userId FROM RegisterEvent "
-                    + "WHERE eventId = ? & eventId =?");
+            PreparedStatement ppstm = conn.prepareStatement("SELECT * FROM RegisterEvent "
+                    + "WHERE eventId = ? AND userId = ?");
             ppstm.setInt(1, eventId);
             ppstm.setInt(2, userId);
             ResultSet rs = ppstm.executeQuery();
             if (rs.next()) {
-                registerId = rs.getInt("userId");
+                result = false;
+            } else {
+                result = true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if(registerId != -1){
-            return true;
+            System.out.println(ex);
         }
         return result;
     }
@@ -68,12 +67,15 @@ public class Check {
         
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement ppstm = conn.prepareStatement("SELECT eventStatus FROM event "
+            PreparedStatement ppstm = conn.prepareStatement("SELECT eventStatus FROM Event "
                     + "WHERE eventId = ?");
             ppstm.setInt(1, eventId);
             ResultSet rs = ppstm.executeQuery();
             if (rs.next()) {
-                status = rs.getBoolean("eventStatus");
+                short temp = rs.getShort("eventStatus");
+                if (temp == 1) {
+                    status = true;
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);

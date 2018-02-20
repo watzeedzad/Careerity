@@ -32,7 +32,7 @@ public class EventDetailServlet extends HttpServlet {
             throws ServletException, IOException {
         String eventId = request.getParameter("eventId");        
         Event event = new Event();
-        event = event.eventDetail(1);      
+        event = event.eventDetail(Integer.parseInt(eventId));      
         if(event!=null){
             request.getSession().setAttribute("event", event);
         }
