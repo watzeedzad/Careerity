@@ -47,7 +47,6 @@ public class Event {
     private int eventCount;
     private String eventPostCode;
     private int eventPhotoId;
-    private String photoPath;
 
     public int getEventId() {
         return eventId;
@@ -265,14 +264,6 @@ public class Event {
         this.eventSubDistrictDesc = eventSubDistrictDesc;
     }
 
-    public String getPhotoPath() {
-        return photoPath;
-    }
-
-    public void setPhotoPath(String photoPath) {
-        this.photoPath = photoPath;
-    }
-
     public Event eventDetail(int eventId) {
         Event event = null;
         try {
@@ -311,7 +302,7 @@ public class Event {
         event.setEventDesc(rs.getString("eventDesc"));
         event.setEventLatitude(rs.getFloat("eventLatitude"));
         event.setEventLongitude(rs.getFloat("eventLongitude"));
-        //event.setEventVideoLink(rs.getString("eventVideoLink"));
+//        event.setEventVideoLink(rs.getString("eventVideoLink"));
         event.setEventCloseDate(rs.getDate("eventCloseDate"));
         event.setEventCreatedDate(rs.getDate("eventCreatedDate"));
         event.setEventAddress(rs.getString("eventAddress"));
@@ -322,35 +313,28 @@ public class Event {
         event.setEventSubDistrictId(rs.getInt("eventSubDistrictId"));
         event.setEventSubDistrictDesc(rs.getString("subDistrictDesc"));
         event.setEventLimit(rs.getInt("eventLimit"));
+        event.setEventStatus(rs.getBoolean("eventStatus"));
         event.setEventCount(rs.getInt("eventCountUser"));
-        event.setEventPostCode(rs.getString("eventPostcode"));
+        event.setEventPostCode(rs.getString("eventPostCode"));
         event.setEventPhotoId(rs.getInt("eventPhotoId"));
-        event.setPhotoPath(rs.getString("photoPath"));
-    }
 
-    public boolean registerEvent(int eventId, int userId) {
+    }
+    
+    public boolean registerEvent(int eventId,int userId) { 
         boolean result = false;
-        try {
+        try {  
             Connection conn = ConnectionBuilder.getConnection();
-            String sqlcmd = "INSERT INTO registerevent(userId,eventId,registerDate) values(?,?,?)";
+            String sqlcmd = "INSERT INTO RegisterEvent values(?, ?, NOW())";
             PreparedStatement pstm = conn.prepareStatement(sqlcmd);
             pstm.setInt(1, userId);
             pstm.setInt(2, eventId);
-            pstm.setDate(3, new java.sql.Date(System.currentTimeMillis()));
             if (pstm.executeUpdate() > 0) {
                 result = true;
             }
-
+            
         } catch (SQLException ex) {
-            Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
         return result;
     }
-
-    public static void main(String[] args) {
-        Event e = new Event();
-        e = e.eventDetail(1);
-        System.out.println(e.eventName);
-    }
-
 }
