@@ -98,15 +98,15 @@
                 <p>แผนที่</p>
             </div>
             <div class="column2">
-                <p>ไม่รู้</p>
-                <p>15 ธันวาคม 2561</p>
-                <p>30 ธันวาคม 2561</p>
-                <p>สักอย่าง</p>
-                <p>15 มกราคม 2561</p>
-                <p>30 มกราคม 2561</p>
-                <p>แถวๆนี้</p>
-                <p>???????</p>
-                <p>500คน</p>
+                <p><fmt:formatNumber value="${sessionScope.event.eventName}"/></p>
+                <p><fmt:formatNumber value="${sessionScope.event.eventStartDate}"/></p>
+                <p><fmt:formatNumber value="${sessionScope.event.eventEndDate}"/></p>
+                <p><fmt:formatNumber value="${sessionScope.event.eventTypeDesc}"/></p>
+                <p><fmt:formatNumber value="${sessionScope.event.eventCreatedDate}"/></p>
+                <p><fmt:formatNumber value="${sessionScope.event.eventCloseDatee}"/></p>
+                <p><fmt:formatNumber value="${sessionScope.event.eventAddress}"/></p>
+                <p><fmt:formatNumber value="${sessionScope.event.eventLimit}"/></p>
+                <p><fmt:formatNumber value="${sessionScope.event.eventLimit}"/></p>
                 <div id="map" style="height:200px; width:300px"/>
 
             </div>
