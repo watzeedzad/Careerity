@@ -320,15 +320,20 @@ public class Event {
 
     }
     
-    public boolean registerEvent(int eventId,int userId) { 
+    public boolean registerEvent(int eventId,int userId,int userCount) { 
         boolean result = false;
         try {  
             Connection conn = ConnectionBuilder.getConnection();
             String sqlcmd = "INSERT INTO RegisterEvent values(?, ?, NOW())";
+            String sqlcmd2 = "UPDATE Event SET eventCountUser = ? " +
+            "WHERE eventId=?";
             PreparedStatement pstm = conn.prepareStatement(sqlcmd);
             pstm.setInt(1, userId);
             pstm.setInt(2, eventId);
-            if (pstm.executeUpdate() > 0) {
+            PreparedStatement pstm2 = conn.prepareStatement(sqlcmd2);
+            pstm2.setInt(1, userCount+1);
+            pstm2.setInt(2, eventId);
+            if (pstm.executeUpdate() > 0 & pstm2.executeUpdate() > 0) {
                 result = true;
             }
             
@@ -337,4 +342,5 @@ public class Event {
         }
         return result;
     }
+  
 }

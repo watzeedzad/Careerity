@@ -33,13 +33,14 @@ public class RegisterEventServlet extends HttpServlet {
             throws ServletException, IOException {
         int eventId = Integer.parseInt(request.getParameter("eventId"));
         int userId = Integer.parseInt(request.getParameter("userId"));
+        int countUser = Integer.parseInt(request.getParameter("countUser"));
         String mss = "";
         Event event = new Event();
         if (Check.checkAlreadyRegister(eventId, userId)) {
             if (Check.checkEventLimit(eventId)) {
                 if (Check.checkEventStatus(eventId)) {
                     mss = "ลงทะเบียนเรียบร้อยแล้ว";
-                    event.registerEvent(eventId, userId);
+                    event.registerEvent(eventId, userId, countUser);
                 } else {
                     mss = "อีเวนท์นี้ปิดรับสมัครแล้ว";
                 }
