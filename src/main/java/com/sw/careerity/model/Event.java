@@ -47,6 +47,15 @@ public class Event {
     private int eventCount;
     private String eventPostCode;
     private int eventPhotoId;
+    private String eventPhotoPath;
+
+    public String getEventPhotoPath() {
+        return eventPhotoPath;
+    }
+
+    public void setEventPhotoPath(String eventPhotoPath) {
+        this.eventPhotoPath = eventPhotoPath;
+    }
 
     public int getEventId() {
         return eventId;
@@ -317,6 +326,7 @@ public class Event {
         event.setEventCount(rs.getInt("eventCountUser"));
         event.setEventPostCode(rs.getString("eventPostCode"));
         event.setEventPhotoId(rs.getInt("eventPhotoId"));
+        event.setEventPhotoPath(rs.getString("photoPath"));
 
     }
     
