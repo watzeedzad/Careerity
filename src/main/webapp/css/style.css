@@ -20,7 +20,7 @@ body{
     margin-left: auto;
     margin-right: auto;
     width: 800px;
-    width: 22%;
+    
 }
 
 /* Style the buttons inside the tab */
@@ -33,6 +33,7 @@ body{
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
+    
 }
 
 /* Change background color of buttons on hover */
