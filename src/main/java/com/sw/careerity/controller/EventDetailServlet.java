@@ -5,10 +5,9 @@
  */
 package com.sw.careerity.controller;
 
+import com.sw.careerity.model.Check;
 import com.sw.careerity.model.Event;
-import com.sw.careerity.model.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,11 +30,16 @@ public class EventDetailServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int eventId = Integer.parseInt(request.getParameter("eventId"));        
-        int userId = Integer.parseInt(request.getParameter("userId"));        
+        int eventId = Integer.parseInt(request.getParameter("eventId"));
         Event event = new Event();
         event = event.eventDetail(eventId);
-        String userRole = User.checkUserRole(userId,eventId);
+        
+        String userRole = "";
+        if(request.getParameter("userId")!=null){
+            int userId = Integer.parseInt(request.getParameter("userId"));
+            userRole = Check.checkUserRole(userId,eventId);
+        }
+        
         if(event!=null){
             request.getSession().setAttribute("event", event);
             request.getSession().setAttribute("userRole", userRole);

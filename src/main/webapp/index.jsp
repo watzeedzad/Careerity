@@ -53,7 +53,7 @@
                         <div class="card flex-md-row mb-4 box-shadow h-md-250">
                             <div class="card-body d-flex flex-column align-items-start">
                                 <h3 class="mb-0">
-                                    <a class="text-dark" href="EventDetail?eventId=1">สอนเย็บผ้า</a>
+                                    <a class="text-dark" href="EventDetail?eventId=1&userId=100001">สอนเย็บผ้า</a>
                                 </h3><br>
                                 <img src="img/calendar.png" width="10%" height="15%"/>
                                 <p class="card-text mb-auto">2018-01-01 - 2018-01-17</p>
@@ -67,7 +67,7 @@
                         <div class="card flex-md-row mb-4 box-shadow h-md-250">
                             <div class="card-body d-flex flex-column align-items-start">
                                 <h3 class="mb-0">
-                                    <a class="text-dark" href="EventDetail?eventId=2">สอนเขียนเว็บ</a>
+                                    <a class="text-dark" href="EventDetail?eventId=2&userId=100001">สอนเขียนเว็บ</a>
                                 </h3><br>
                                 <img src="img/calendar.png" width="10%" height="15%"/>
                                 <p class="card-text mb-auto">2018-02-27 - 2018-03-08</p>

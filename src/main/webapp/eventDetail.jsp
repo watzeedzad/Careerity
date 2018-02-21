@@ -126,18 +126,21 @@
 
         </div>
         <!-- ==================================button-creator==================================== -->
-
+        <% String userRole = (String)request.getSession().getAttribute("userRole"); 
+           if(userRole.equals("owner")){
+        %>
         <button type="button" class="btn btn-info btn-lg" style="float: right; background-color:blue; border-color: blue">แก้ไขอีเวนท์</button>
         <button type="button" class="btn btn-info btn-lg" style="float: right; background-color:#ccc; border-color: #ccc">ลบอีเวนท์</button>
         <button type="button" class="btn btn-info btn-lg" style="float: right; background-color:#ccc; border-color: #ccc">ปิดอีเวนท์</button>
         <button type="button" class="btn btn-info btn-lg" style="float: right; ">ดูผู้เข้าร่วม</button>
+        <% } %>
 
         <!-- ==================================Pop-up1==================================== -->
 
 
         <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="float: right; ">ลงทะเบียน</button>
-
+        
         <!-- Modal -->
         <form action="RegisterEvent" method="post">
         <div class="modal fade" id="myModal" role="dialog">
