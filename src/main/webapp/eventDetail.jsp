@@ -15,6 +15,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
         <style>
@@ -72,6 +76,10 @@
                 max-width: 100%;
                 height: auto;
             }
+
+            h1{
+                color: lightskyblue;
+            }
         </style>
         <title>ViewEvent</title>
     </head>
@@ -88,13 +96,14 @@
         <!-- ===================================================================================================== -->
 
         <div class="box">
-            <h1><img src="img/Temp-cat.jpg" width="150px"  />  หัวอีเวนท์</h1>
+            
+            <h1><img lass="img-circle" alt="Cinque Terre"   src="${sessionScope.event.eventPhotoPath}" width="200px"  />   ${sessionScope.event.eventName}</h1>
             <hr>
 
             <div class="column1" >
-                <p>ชื่อ :</p>
                 <p>ประเภทของทักษะงาน :</p>
-                <p>วันที่อีเวนท์เริ่มต้น :</p>
+                <p>วันที่อีเวนท์เริ่มต้น :</p
+                >
                 <p>วันที่อีเวนท์สิ้นสุด :</p>
                 <p>รายละเอียดเพิ่มเติม :</p>
                 <p>วันที่เปิดรับสมัคร :</p>
@@ -105,7 +114,6 @@
                 <p>แผนที่ :</p>
             </div>
             <div class="column2">
-                <p>${sessionScope.event.eventName}</p>
                 <p>${sessionScope.event.eventSkillTypeDesc}</p>
                 <p>${sessionScope.event.eventStartDate}</p>
                 <p>${sessionScope.event.eventEndDate}</p>
@@ -126,8 +134,8 @@
 
         </div>
         <!-- ==================================button-creator==================================== -->
-        <% String userRole = (String)request.getSession().getAttribute("userRole"); 
-           if(userRole.equals("owner")){
+        <% String userRole = (String) request.getSession().getAttribute("userRole");
+            if (userRole.equals("owner")) {
         %>
         <button type="button" class="btn btn-info btn-lg" style="float: right; background-color:blue; border-color: blue">แก้ไขอีเวนท์</button>
         <button type="button" class="btn btn-info btn-lg" style="float: right; background-color:#ccc; border-color: #ccc">ลบอีเวนท์</button>
@@ -139,33 +147,33 @@
 
 
         <!-- Trigger the modal with a button -->
-        <% if(userRole.equals("folk")){ %>
+        <% if (userRole.equals("folk")) { %>
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="float: right; ">ลงทะเบียน</button>
-        <% } %>
+        <% }%>
         <!-- Modal -->
         <form action="RegisterEvent" method="post">
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>คุณต้องการจะลงทะเบียนอีเวนท์นี้ใช่หรือไม่</p>
+                        </div>
+                        <div class="mo-footer">
+                            <input type="hidden" name="eventId" value="${sessionScope.event.eventId}">
+                            <input type="hidden" name="countUser" value="${sessionScope.event.eventCount}">
+                            <input type="hidden" name="userId" value="100001">
+                            <button type="submit" class="btn btn-lg" data-toggle="modal" data-target="#myModal2">ยืนยัน</button>
+                            <button type="button" class="btn btn-lg" data-dismiss="modal">ยกเลิก</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <p>คุณต้องการจะลงทะเบียนอีเวนท์นี้ใช่หรือไม่</p>
-                    </div>
-                    <div class="mo-footer">
-                        <input type="hidden" name="eventId" value="${sessionScope.event.eventId}">
-                        <input type="hidden" name="countUser" value="${sessionScope.event.eventCount}">
-                        <input type="hidden" name="userId" value="100001">
-                        <button type="submit" class="btn btn-lg" data-toggle="modal" data-target="#myModal2">ยืนยัน</button>
-                        <button type="button" class="btn btn-lg" data-dismiss="modal">ยกเลิก</button>
-                    </div>
+
                 </div>
-
             </div>
-        </div>
         </form>
 
         <!-- ==================================Pop-up2==================================== -->        
