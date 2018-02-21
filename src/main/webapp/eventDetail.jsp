@@ -42,7 +42,16 @@
 
             }
             img {
-                float:left;}
+                float:left;
+            }
+            .img-border {
+                float:left;
+                max-width: 100%;
+                height: auto;
+                margin-right: 50px;
+                border: 2px solid  black;
+                border-radius: 20px;
+            }
 
 
             h1 {
@@ -72,10 +81,6 @@
                 text-align: center;
                 font-size: 24px;
             }
-            img {
-                max-width: 100%;
-                height: auto;
-            }
 
             h1{
                 color: lightskyblue;
@@ -97,7 +102,7 @@
 
         <div class="box">
             
-            <h1><img lass="img-circle" alt="Cinque Terre"   src="${sessionScope.event.eventPhotoPath}" width="200px"  />   ${sessionScope.event.eventName}</h1>
+            <h1><img class="img-border" alt="Cinque Terre"   src="${sessionScope.event.eventPhotoPath}" width="200px"  />   ${sessionScope.event.eventName}</h1>
             <hr>
 
             <div class="column1" >
@@ -202,8 +207,6 @@
 
     </div>
 
-
-    <%@ include file = "footer.jsp" %>
 </body>
 <script>
     function initMap() {

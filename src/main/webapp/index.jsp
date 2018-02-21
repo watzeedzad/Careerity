@@ -464,7 +464,6 @@
             document.getElementById("defaultOpen").click();
         </script>
 
-        <%@ include file = "footer.jsp" %>
                 </body>
 
 
