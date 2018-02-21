@@ -139,8 +139,9 @@
 
 
         <!-- Trigger the modal with a button -->
+        <% if(userRole.equals("folk")){ %>
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="float: right; ">ลงทะเบียน</button>
-        
+        <% } %>
         <!-- Modal -->
         <form action="RegisterEvent" method="post">
         <div class="modal fade" id="myModal" role="dialog">
